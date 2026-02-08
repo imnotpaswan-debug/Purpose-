@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Propose Day ❤️</title>
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg,#ff4d6d,#ff758c,#ff8fa3);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+}h1 { text-align: center; z-index: 2; animation: glow 2s infinite alternate; }
+
+@keyframes glow { from { text-shadow: 0 0 10px white; } to { text-shadow: 0 0 30px #ffd6e0; } }
+
+.buttons { margin-top: 25px; z-index: 2; }
+
+button { padding: 14px 34px; font-size: 18px; border: none; border-radius: 40px; cursor: pointer; margin: 10px; transition: 0.3s; }
+
+#yes { background: white; color: #ff4d6d; animation: pulse 1.4s infinite; }
+
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.12); } 100% { transform: scale(1); } }
+
+#no { background: #ff4d6d; color: white; position: relative; }
+
+.heart { position: absolute; width: 22px; height: 22px; background: red; transform: rotate(45deg); animation: float 8s linear infinite; }
+
+.heart::before, .heart::after { content: ''; position: absolute; width: 22px; height: 22px; background: red; border-radius: 50%; }
+
+.heart::before { top: -11px; left: 0; } .heart::after { left: -11px; top: 0; }
+
+@keyframes float { from { transform: translateY(100vh) rotate(45deg); opacity:1; } to { transform: translateY(-10vh) rotate(45deg); opacity:0; } }
+
+#message { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); color: white; font-size: 34px; align-items: center; justify-content: center; text-align: center; padding: 25px; animation: fadeIn 1.5s ease; }
+
+@keyframes fadeIn { from { opacity:0; transform:scale(0.7); } to { opacity:1; transform:scale(1); } } </style>
+
+</head>
+<body>
+<h1>Will You Be Mine Forever? 💍❤️</h1>
+<div class="buttons">
+  <button id="yes">Yes ❤️</button>
+  <button id="no">No 🙈</button>
+</div><div id="message">
+  Happy Propose Day Madam Ji ❤️<br/><br/>
+  Love You Forever ❤️<br/><br/>
+  You Make My World Beautiful ✨❤️
+</div><script>
+const noBtn = document.getElementById('no');
+
+function moveNoBtn(){
+  const x = Math.random() * (window.innerWidth - 120);
+  const y = Math.random() * (window.innerHeight - 60);
+  noBtn.style.position = 'absolute';
+  noBtn.style.left = x + 'px';
+  noBtn.style.top = y + 'px';
+  noBtn.style.transform = 'scale('+(0.8+Math.random()*0.4)+')';
+}
+
+noBtn.addEventListener('mouseover', moveNoBtn);
+noBtn.addEventListener('mousedown', moveNoBtn);
+noBtn.addEventListener('touchstart', moveNoBtn);
+setInterval(moveNoBtn,1500);
+
+const yesBtn = document.getElementById('yes');
+const msg = document.getElementById('message');
+
+yesBtn.onclick = () => {
+  msg.style.display = 'flex';
+  document.querySelector('.buttons').style.display='none';
+  document.querySelector('h1').style.display='none';
+};
+
+function createHeart(){
+  const heart=document.createElement('div');
+  heart.className='heart';
+  heart.style.left=Math.random()*100+'vw';
+  heart.style.animationDuration=(5+Math.random()*5)+'s';
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),10000);
+}
+
+setInterval(createHeart,300);
+</script></body>
+</html>
